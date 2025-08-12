@@ -5,7 +5,7 @@ It was built as a learning project and portfolio piece to demonstrate complex ma
 
 ## Features
 - **Vehicle presets** with real-life values (power, weight, fuel capacity, gear ratios, etc.)
-- **Fictional track** preset for cars to run on, including functional pitlane and a mix of corner profiles
+- **Fictional track** preset for cars to run on, including functional pit lane and a mix of corner profiles
 - **Utility class** to calculate vehicle dynamics based on vehicle attributes
 - **[Telemetrix](https://github.com/nick-p-34/telemetrix) integration**, allowing data to be streamed to the `/telemetry/recent` REST endpoint
 
@@ -56,7 +56,9 @@ The above run command can be modified by providing values for the following para
 
 ### `--enable-20hz-logging`
 - **Description:** Enables high-frequency telemetry logging at 20 Hz (20 samples per second), producing more granular data.
-- **Expected values:** `true` or `false`
+- **Expected values:**
+  - `true`: Stream full telemetry. `true` can be omitted in the command
+  - `false`: Stream only timing gate events. Whole parameter can be omitted
 - **Default value:** `false`
 - **Usage:**
 ```bash
@@ -65,7 +67,9 @@ python run.py --enable-20hz-logging
 
 ### `--send-to-server`
 - **Description:** Sends generated telemetry data to a running Telemetrix server instance instead of writing CSV files locally.
-- **Expected values:** `true` or `false`
+- **Expected values:**
+  - `true`: Stream to Telemetrix. An instance of Telemetrix must be running (Step 3)
+  - `false`: Stream to local `telemetry_log.csv` file. File is created if it does not exist
 - **Default value:** `false`
 - **Usage:**
 ```bash
@@ -82,7 +86,7 @@ python run.py --sim-time-s 150
 ```
 
 ### `--car-id`
-- **Description:** The racing number of the car. Purely for customisation or identification purposes, non essential.
+- **Description:** The racing number of the car. Purely for customisation or identification purposes, non-essential.
 - **Expected values:** `string`, in the format: `#` followed by `int`
 - **Default value:** `#34`
 - **Usage:**
@@ -91,7 +95,7 @@ python run.py --car-id #1
 ```
 
 ### `--driver`
-- **Description:** The name of the driver. Purely for customisation or identification purposes, non essential.
+- **Description:** The name of the driver. Purely for customisation or identification purposes, non-essential.
 - **Expected values:** `string`
 - **Default value:** `"Nick Parke"`
 - **Usage:**
@@ -100,7 +104,7 @@ python run.py --driver "Max Verstappen"
 ```
 
 ### `--team`
-- **Description:** The name of the team. Purely for customisation or identification purposes, non essential.
+- **Description:** The name of the team. Purely for customisation or identification purposes, non-essential.
 - **Expected values:** `string`
 - **Default value:** `"Zenith Racing"`
 - **Usage:**
@@ -110,7 +114,19 @@ python run.py --team "Red Bull Racing"
 
 ### `--vehicle-preset`
 - **Description:** The class of vehicle that will be used in the simulation. Determines the vehicle parameters used in calculations.
-- **Expected values:** `gt3`, `f1`, `tcr`, `lmdh`
+- **Expected values:**
+  - `f1`: Formula One
+  - `indycar`: IndyCar Series
+  - `lmdh`: WEC Hypercar, IMSA GTP
+  - `lmp2`: WEC, IMSA LMP2
+  - `gt3`: SRO GT3, IMSA GTD
+  - `gt4`: SRO GT4, IMSA GSX
+  - `tcr`: Touring Car, BTCC
+  - `mx5`: Global Mazda MX-5 Cup
+  - `vee`: Formula Vee
+  - `zetec`: ICCR Fiesta Zetec, Kirkistown Fiestas
+  - `nascar`: NASCAR Cup Series
+  - `legend`: ICCR Legends, MSVR Legend Cars, INEX Legends
 - **Default value:** `gt3`
 - **Usage:**
 ```bash
