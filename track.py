@@ -53,6 +53,8 @@ add_segment("Straight C", "straight", 360.0)
 add_segment("Final Connector", "straight", 350.000)
 
 LAP_LENGTH = SEGMENTS[-1].cumulative_end
+OUTLAP_SPEED_KMH = 80.0
+OUTLAP_END_POS_M = 350.0
 
 GATE_DISTANCES = [
     198.374, 396.749, 595.123, 793.497, 991.872, 1190.246, 1388.620, 1586.995, 1785.369, 1983.743,

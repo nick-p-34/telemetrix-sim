@@ -4,6 +4,7 @@ import time
 from typing import List, Dict, Optional
 from state import CarState, TelemetryEvent
 from track import Segment
+import track
 from utils import (
     clamp,
     power_limited_speed,
@@ -128,17 +129,23 @@ class Sim:
             target_speed = max(6.0, corner_target_speed(seg.radius, effective_mu) * 0.92)
 
         else:
-            target_speed = power_limited_speed(self.params["peak_power_kw"], self.params["CdA"],
-                                               self.params["air_density"]) * 0.98
+            target_speed = power_limited_speed(self.params["peak_power_kw"], self.params["CdA"], self.params["air_density"]) * 0.98
             rt = max(0.05, self.driver_params["steering_response_time"])
             alpha = (dt / (rt + 1e-9))
+
             self.driver_state["target_wheel_deg"] += alpha * (0.0 - self.driver_state["target_wheel_deg"])
             hand_rt = max(0.02, self.driver_params["steering_response_time"] * 0.6)
             hand_alpha = (dt / (hand_rt + 1e-9))
-            self.driver_state["actual_wheel_deg"] += hand_alpha * (
-                        self.driver_state["target_wheel_deg"] - self.driver_state["actual_wheel_deg"])
-            s.steering_deg = clamp(self.driver_state["actual_wheel_deg"], -self.params.get("steering_lock_deg", 180.0),
-                                   self.params.get("steering_lock_deg", 180.0))
+
+            self.driver_state["actual_wheel_deg"] += hand_alpha * (self.driver_state["target_wheel_deg"] - self.driver_state["actual_wheel_deg"])
+            s.steering_deg = clamp(self.driver_state["actual_wheel_deg"], -self.params.get("steering_lock_deg", 180.0), self.params.get("steering_lock_deg", 180.0))
+
+        outlap_speed_mps = track.OUTLAP_SPEED_KMH / 3.6
+        outlap_end_pos = track.OUTLAP_END_POS_M % self.lap_length
+        pos_on_lap = s.position_m % self.lap_length
+
+        if s.lap == 1 and pos_on_lap < outlap_end_pos:
+            target_speed = min(target_speed, outlap_speed_mps)
 
         speed = s.speed_mps
         speed_err = target_speed - speed

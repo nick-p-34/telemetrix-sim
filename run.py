@@ -1,5 +1,6 @@
 import argparse
 import constants
+import track
 from sim import Sim
 from track import SEGMENTS, GATES
 from vehicle import VEHICLE_PARAMS, VEHICLE_PRESETS
@@ -33,13 +34,13 @@ def main():
 
     sim = Sim(params, SEGMENTS, GATES, dt=constants.DT)
     sim.state.position_m = 0.0
-    sim.state.speed_mps = 5.0
+    sim.state.speed_mps = track.OUTLAP_SPEED_KMH / 3.6
     sim.state.fuel_l = params["fuel_capacity_l"]
     sim.state.tyre_wear = 0.0
     sim.state.gear = 1
 
     events = sim.run(sim_time_s=args.sim_time_s, car_id=args.car_id, driver=args.driver, team=args.team)
-    print(f"Sim produced {len(events)} telemetry events.")
+    print(f"Sim produced {events} telemetry events.")
 
 
 if __name__ == "__main__":
