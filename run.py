@@ -22,7 +22,7 @@ def main():
     preset_name = args.vehicle_preset
 
     if preset_name not in VEHICLE_PRESETS:
-        print(f"Unknown vehicle preset '{preset_name}', using default.")
+        print(f"Unknown vehicle preset '{preset_name}', using default (GT3).")
         params = VEHICLE_PARAMS
 
     else:

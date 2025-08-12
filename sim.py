@@ -29,7 +29,7 @@ class Sim:
         self.state = CarState()
         self.state.fuel_l = self.params.get("fuel_capacity_l", 0.0)
         self._shift_end_time: float = 0.0
-        self.events: List[TelemetryEvent] = []
+        self.event_count: int = 0
         self.prev_gate_index = max(self.gates.keys())
         self.prev_gate_time = 0.0
         self.last_print = time.time()
@@ -307,7 +307,7 @@ class Sim:
                     extra={"position_m": round(s.position_m % self.lap_length, 3)},
                 )
 
-                self.events.append(evt)
+                self.event_count += 1
                 self._emit_event(evt)
 
     def _emit_event(self, evt: TelemetryEvent):
@@ -359,7 +359,7 @@ class Sim:
             extra={"position_m": round(s.position_m % self.lap_length, 3)},
         )
 
-        self.events.append(evt)
+        self.event_count += 1
         self._emit_event(evt)
 
     def run(self, sim_time_s: float = 200.0, car_id: str = "#34", driver: str = "Nick Parke", team: str = "Zenith Racing"):
@@ -376,4 +376,4 @@ class Sim:
             if random.random() < 0.02:
                 self.segment_targets = [self.compute_segment_target(seg) for seg in self.segments]
 
-        return self.events
+        return self.event_count
