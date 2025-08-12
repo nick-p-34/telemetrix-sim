@@ -1,6 +1,6 @@
 # Telemetrix Sim
 
-**Telemetrix Sim** is a demo application designed to work with Telemetrix, by simulating a race car and emitting the generated telemetry.
+**Telemetrix Sim** is a demo application designed to work with [Telemetrix](https://github.com/nick-p-34/telemetrix), by simulating a race car and emitting the generated telemetry.
 It was built as a learning project and portfolio piece to demonstrate complex mathematical models and cross-system integration.
 
 ## Features
@@ -41,7 +41,7 @@ Follow the instructions in the [Telemetrix repo](https://github.com/nick-p-34/te
 ```bash
 python run.py
 ```
-This will start the app using default values.
+This will start the app using default values, and output the results to `telemetry_log.csv`.
 
 ---
 
