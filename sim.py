@@ -370,12 +370,41 @@ class Sim:
         self._emit_event(evt)
 
     def run(self, sim_time_s: float = 200.0, car_id: str = "#34", driver: str = "Nick Parke", team: str = "Zenith Racing"):
-        steps = int(sim_time_s / self.dt)
+        end_time = sim_time_s
+        max_gate = max(self.gates.keys())
 
-        for _ in range(steps):
+        finish_after_next_lap = False
+        max_extension_seconds = 150.0
+        extension_start_time = None
+
+        while True:
+            prev_gate_before = self.prev_gate_index
             diagnostics = self.update(self.dt)
-
             self.check_gates_and_emit(car_id, driver, team)
+            prev_gate_after = self.prev_gate_index
+            crossed_final_now = (prev_gate_before != prev_gate_after) and (prev_gate_after == max_gate)
+
+            if (not finish_after_next_lap) and (self.state.time_s >= end_time):
+                finish_after_next_lap = True
+                extension_start_time = self.state.time_s
+                print(
+                    f"Session time expired at t={self.state.time_s:.3f}s — allowing finish of current lap (max extension {max_extension_seconds}s).")
+
+            if finish_after_next_lap and crossed_final_now:
+                print(f"Finished extra lap at t={self.state.time_s:.3f}s — stopping simulation.")
+                break
+
+            if (not finish_after_next_lap) and (self.state.time_s < end_time):
+                pass
+
+            elif (not finish_after_next_lap) and (self.state.time_s >= end_time):
+                print("Warning: time expired but extension not enabled; stopping simulation.")
+                break
+
+            if finish_after_next_lap and (extension_start_time is not None) and (max_extension_seconds is not None):
+                if (self.state.time_s - extension_start_time) > max_extension_seconds:
+                    print(f"Warning: finishing lap extension exceeded {max_extension_seconds}s. Stopping simulation.")
+                    break
 
             if constants.ENABLE_20HZ_LOGGING:
                 self.emit_current_telemetry_event(car_id, driver, team)
