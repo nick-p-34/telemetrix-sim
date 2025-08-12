@@ -88,7 +88,7 @@ python run.py --sim-time-s 150
 ### `--car-id`
 - **Description:** The racing number of the car. Purely for customisation or identification purposes, non-essential.
 - **Expected values:** `string`, in the format: `#` followed by `int`
-- **Default value:** `#34`
+- **Default value:** `"#34"`
 - **Usage:**
 ```bash
 python run.py --car-id #1
@@ -117,6 +117,7 @@ python run.py --team "Red Bull Racing"
 - **Expected values:**
   - `f1`: Formula One
   - `indycar`: IndyCar Series
+  - `nascar`: NASCAR Cup Series
   - `lmdh`: WEC Hypercar, IMSA GTP
   - `lmp2`: WEC, IMSA LMP2
   - `gt3`: SRO GT3, IMSA GTD
@@ -125,7 +126,6 @@ python run.py --team "Red Bull Racing"
   - `mx5`: Global Mazda MX-5 Cup
   - `vee`: Formula Vee
   - `zetec`: ICCR Fiesta Zetec, Kirkistown Fiestas
-  - `nascar`: NASCAR Cup Series
   - `legend`: ICCR Legends, MSVR Legend Cars, INEX Legends
 - **Default value:** `gt3`
 - **Usage:**
@@ -149,7 +149,7 @@ python run.py \
   --send-to-server \
   --team "Iron Dames" \
   --driver "Sarah Bovy" \
-  --car-id #85
+  --car-id "#85"
 ```
 
 By omitting `--enable-20hz-logging` and `vehicle-preset`, their default values, `false` and `gt3` are used.
