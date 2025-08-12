@@ -130,3 +130,5 @@ python run.py \
   --driver "Sarah Bovy" \
   --car-id #85
 ```
+
+By omitting `--enable-20hz-logging` and `vehicle-preset`, their default values, `false` and `gt3` are used.
