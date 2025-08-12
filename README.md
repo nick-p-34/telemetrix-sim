@@ -91,7 +91,7 @@ python run.py --sim-time-s 150
 - **Default value:** `"#34"`
 - **Usage:**
 ```bash
-python run.py --car-id #1
+python run.py --car-id "#1"
 ```
 
 ### `--driver`
