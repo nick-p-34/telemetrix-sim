@@ -120,14 +120,12 @@ You can combine multiple parameters in a single run command.
 For example, to create a **1-hour session**,  
 **stream data to Telemetrix**,  
 **disable 20Hz logging**,  
-and run as the **Iron Dames**
-by combining the following parameters:
+and run as the **Iron Dames**, combine the following parameters:
 
 ```bash
 python run.py \
   --sim-time-s 3600 \
   --send-to-server \
-  --vehicle-preset gt3 \
   --team "Iron Dames" \
   --driver "Sarah Bovy" \
   --car-id #85
