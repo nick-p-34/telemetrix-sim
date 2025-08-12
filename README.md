@@ -34,10 +34,15 @@ git clone https://github.com/nick-p-34/telemetrix-sim.git
 cd telemetrix-sim
 ```
 
-### 2. OPTIONAL - Start Telemetrix
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. OPTIONAL - Start Telemetrix
 Follow the instructions in the [Telemetrix repo](https://github.com/nick-p-34/telemetrix)
 
-### 3. Run the application
+### 4. Run the application
 ```bash
 python run.py
 ```
