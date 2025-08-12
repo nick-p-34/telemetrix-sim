@@ -5,9 +5,9 @@ It was built as a learning project and portfolio piece to demonstrate complex ma
 
 ## Features
 - **Vehicle presets** with real-life values (power, weight, fuel capacity, gear ratios, etc.)
-- **Track preset** for cars to run on, including functional pitlane and a mix of corners
+- **Fictional track** preset for cars to run on, including functional pitlane and a mix of corner profiles
 - **Utility class** to calculate vehicle dynamics based on vehicle attributes
-- **Telemetrix integration**, allowing data to be streamed to the `/telemetry/recent` REST endpoint
+- **[Telemetrix](https://github.com/nick-p-34/telemetrix) integration**, allowing data to be streamed to the `/telemetry/recent` REST endpoint
 
 ---
 
@@ -16,7 +16,7 @@ Imagine you’re running a car at a race event:
 1. The car leaves the garage → transponder & sensors activate
 2. Sensors measure car performance & parameters
 3. Transponder emits values measured from car
-4. Emitted values are received by Telemetrix → data can be displayed on pit wall
+4. Emitted values received by Telemetrix → can be displayed on pit wall
 
 ---
 
@@ -47,7 +47,7 @@ This will start the app using default values.
 
 ## Run parameters
 
-The above command can be modified by providing values for the following parameters:
+The above run command can be modified by providing values for the following parameters:
 
 ### `--enable-20hz-logging`
 - **Description:** Enables high-frequency telemetry logging at 20 Hz (20 samples per second), producing more granular data.
