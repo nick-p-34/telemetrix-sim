@@ -1,10 +1,11 @@
 import csv
 import requests
-from constants import SEND_TO_SERVER, SERVER_URL, OUTPUT_FILE
+import constants
+from constants import SERVER_URL, OUTPUT_FILE
 
 
 def send_event(event: dict):
-    if SEND_TO_SERVER:
+    if constants.SEND_TO_SERVER:
         try:
             response = requests.post(SERVER_URL, json=event, timeout=10.0)
 
