@@ -294,7 +294,6 @@ class Sim:
                     lap_time = None
 
                 evt = TelemetryEvent(
-                    timestamp_iso=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
                     carId=car_id,
                     driver=driver,
                     team=team,
@@ -326,7 +325,6 @@ class Sim:
             "lap": evt.lap,
             "speed": evt.speed_kmh,
             "rpm": evt.rpm,
-            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             "gate": evt.gate,
             "split_time": evt.split_time,
             "gear": evt.gear,
@@ -346,7 +344,6 @@ class Sim:
     def emit_current_telemetry_event(self, car_id: str = "#34", driver: str = "Nick Parke", team: str = "Zenith Racing"):
         s = self.state
         evt = TelemetryEvent(
-            timestamp_iso=time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
             carId=car_id,
             driver=driver,
             team=team,

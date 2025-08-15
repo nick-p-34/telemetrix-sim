@@ -19,7 +19,6 @@ class CarState:
 
 @dataclass
 class TelemetryEvent:
-    timestamp_iso: str
     carId: str
     driver: str
     team: str
