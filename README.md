@@ -138,14 +138,14 @@ python run.py --vehicle-preset f1
 ## Example: Combining parameters
 
 You can combine multiple parameters in a single run command.  
-For example, to create a **1-hour session**,  
+For example, to run the car for **1 hour**,  
 **stream data to Telemetrix**,  
 **disable 20Hz logging**,  
 and run as the **Iron Dames**, combine the following parameters:
 
 ```bash
 python run.py \
-  --sim-time-s 3600 \
+  --stint-time-s 3600 \
   --send-to-server \
   --team "Iron Dames" \
   --driver "Sarah Bovy" \
