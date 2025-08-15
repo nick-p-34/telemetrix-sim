@@ -35,5 +35,5 @@ class TelemetryEvent:
     fuel_l: float
     tyre_wear: float
     lap_time: Optional[float]
-    race_time: float
+    stint_time: float
     extra: Dict = field(default_factory=dict)

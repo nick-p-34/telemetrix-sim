@@ -310,7 +310,7 @@ class Sim:
                     fuel_l=round(s.fuel_l, 3),
                     tyre_wear=round(s.tyre_wear, 4),
                     lap_time=round(lap_time, 3) if lap_time is not None else None,
-                    race_time=round(s.time_s, 3),
+                    stint_time=round(s.time_s, 3),
                     extra={"position_m": round(s.position_m % self.lap_length, 3)},
                 )
 
@@ -336,7 +336,7 @@ class Sim:
             "fuel_l": evt.fuel_l,
             "tyre_wear": evt.tyre_wear,
             "lap_time": evt.lap_time,
-            "race_time": evt.race_time,
+            "race_time": evt.stint_time,
             "position_m": evt.extra.get("position_m"),
         }
 
@@ -362,7 +362,7 @@ class Sim:
             fuel_l=round(s.fuel_l, 3),
             tyre_wear=round(s.tyre_wear, 4),
             lap_time=None,
-            race_time=round(s.time_s, 3),
+            stint_time=round(s.time_s, 3),
             extra={"position_m": round(s.position_m % self.lap_length, 3)},
         )
 
