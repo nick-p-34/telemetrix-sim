@@ -10,7 +10,7 @@ def main():
     parser = argparse.ArgumentParser(description="Race Simulator")
     parser.add_argument("--enable-20hz-logging", action="store_true", help="When writing to the CSV file, include all telemetry events (20 per second) in the file")
     parser.add_argument("--send-to-server", action="store_true", help="Send telemetry data to server instead of the CSV file. Telemetrix must be running")
-    parser.add_argument("--sim-time-s", type=float, default=360.0, help="Simulated session length in seconds.")
+    parser.add_argument("--stint-time-s", type=float, default=360.0, help="Simulated stint length in seconds.")
     parser.add_argument("--car-id", type=str, default="#34")
     parser.add_argument("--driver", type=str, default="Nick Parke")
     parser.add_argument("--team", type=str, default="Zenith Racing")

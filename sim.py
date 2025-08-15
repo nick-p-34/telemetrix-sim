@@ -388,17 +388,17 @@ class Sim:
                 finish_after_next_lap = True
                 extension_start_time = self.state.time_s
                 print(
-                    f"Session time expired at t={self.state.time_s:.3f}s — allowing finish of current lap (max extension {max_extension_seconds}s).")
+                    f"Stint ended at t={self.state.time_s:.3f}s. Stint time extended by {max_extension_seconds}s to allow completion of in-lap.")
 
             if finish_after_next_lap and crossed_final_now:
-                print(f"Finished extra lap at t={self.state.time_s:.3f}s — stopping simulation.")
+                print(f"Finished in-lap at t={self.state.time_s:.3f}s. Stopping simulation.")
                 break
 
             if (not finish_after_next_lap) and (self.state.time_s < end_time):
                 pass
 
             elif (not finish_after_next_lap) and (self.state.time_s >= end_time):
-                print("Warning: time expired but extension not enabled; stopping simulation.")
+                print("Warning: time expired but extension not enabled. Stopping simulation.")
                 break
 
             if finish_after_next_lap and (extension_start_time is not None) and (max_extension_seconds is not None):

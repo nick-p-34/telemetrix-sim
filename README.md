@@ -76,8 +76,8 @@ python run.py --enable-20hz-logging
 python run.py --send-to-server
 ```
 
-### `--sim-time-s`
-- **Description:** The length, in seconds, of the simulated session. Actual session length will be extended to allow for completion of the final lap.
+### `--stint-time-s`
+- **Description:** The length, in seconds, of the simulated stint. Actual stint length will be extended to allow for completion of the final lap.
 - **Expected values:** `int` or `float`, positive values
 - **Default value:** `360.0`
 - **Usage:**
